@@ -85,7 +85,10 @@
 
 - (void)startScan
 {
-    [_session startRunning];
+    if (![_session isRunning])
+    {
+        [_session startRunning];
+    }
 }
 
 - (void)stopScan

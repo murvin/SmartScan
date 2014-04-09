@@ -24,4 +24,30 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)object
+{
+    if (self == object)
+    {
+        return YES;
+    }
+
+    if ([self class] != [object class])
+    {
+        return NO;
+    }
+
+    return [self isEqualToScan:object];
+}
+
+- (NSUInteger)hash
+{
+    return [_metaDataObject hash] ^ [_stringValue hash];
+}
+
+- (BOOL)isEqualToScan:(SCScan *)otherScan
+{
+    return _metaDataObject == otherScan.metaDataObject && _stringValue ? [_stringValue isEqualToString:otherScan.stringValue] : YES;
+}
+
 @end
+ 

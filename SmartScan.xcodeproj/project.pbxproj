@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A89866B718F5A36E0007C466 /* SCScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A89866B618F5A36E0007C466 /* SCScan.m */; };
+		A89866B818F5A36E0007C466 /* SCScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A89866B618F5A36E0007C466 /* SCScan.m */; };
 		A8F7A63B18F5584600507956 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63A18F5584600507956 /* Foundation.framework */; };
 		A8F7A63D18F5584600507956 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63C18F5584600507956 /* CoreGraphics.framework */; };
 		A8F7A63F18F5584600507956 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63E18F5584600507956 /* UIKit.framework */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A89866B518F5A36E0007C466 /* SCScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCScan.h; sourceTree = "<group>"; };
+		A89866B618F5A36E0007C466 /* SCScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCScan.m; sourceTree = "<group>"; };
 		A8F7A63718F5584600507956 /* SmartScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F7A63A18F5584600507956 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A8F7A63C18F5584600507956 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -166,6 +170,8 @@
 			children = (
 				A8F7A67418F5587900507956 /* SCScanner.h */,
 				A8F7A67518F5587900507956 /* SCScanner.m */,
+				A89866B518F5A36E0007C466 /* SCScan.h */,
+				A89866B618F5A36E0007C466 /* SCScan.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 				A8F7A64B18F5584600507956 /* SCAppDelegate.m in Sources */,
 				A8F7A67618F5587900507956 /* SCScanner.m in Sources */,
 				A8F7A67C18F5589B00507956 /* SCViewController.m in Sources */,
+				A89866B718F5A36E0007C466 /* SCScan.m in Sources */,
 				A8F7A64718F5584600507956 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A89866B818F5A36E0007C466 /* SCScan.m in Sources */,
 				A8F7A66918F5584600507956 /* SmartScanTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +507,7 @@
 				A8F7A66E18F5584600507956 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8F7A66F18F5584600507956 /* Build configuration list for PBXNativeTarget "SmartScanTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +516,7 @@
 				A8F7A67118F5584600507956 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

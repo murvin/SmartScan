@@ -72,6 +72,21 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
     }
 }
 
+- (void)animateToFrame : (CGRect)frame withCompletionBlock : (void (^)(BOOL finised))completion
+{
+    if (CGRectEqualToRect(self.frame, frame))
+    {
+        completion(YES);
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3f delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            self.frame = frame;
+
+        } completion:completion];
+    }
+}
+
 #pragma mark - Private Helpers
 
 - (void)createLayers

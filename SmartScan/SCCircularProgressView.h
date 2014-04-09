@@ -16,4 +16,6 @@
 
 - (void)stopAnimating;
 
+- (void)animateToFrame : (CGRect)frame withCompletionBlock : (void (^)(BOOL finised))completion;
+
 @end

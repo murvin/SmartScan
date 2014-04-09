@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0572A176-EA6E-4E83-BCDE-9A63F544D37B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SmartScan</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>110CFE4D-1407-4594-84F7-519027562303</key>
+		<string>https://github.com/murvin/SmartScan.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SmartScan.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>110CFE4D-1407-4594-84F7-519027562303</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/murvin/SmartScan.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>110CFE4D-1407-4594-84F7-519027562303</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>110CFE4D-1407-4594-84F7-519027562303</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SmartScan</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,514 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A8F7A63B18F5584600507956 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63A18F5584600507956 /* Foundation.framework */; };
+		A8F7A63D18F5584600507956 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63C18F5584600507956 /* CoreGraphics.framework */; };
+		A8F7A63F18F5584600507956 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63E18F5584600507956 /* UIKit.framework */; };
+		A8F7A64518F5584600507956 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8F7A64318F5584600507956 /* InfoPlist.strings */; };
+		A8F7A64718F5584600507956 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F7A64618F5584600507956 /* main.m */; };
+		A8F7A64B18F5584600507956 /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F7A64A18F5584600507956 /* SCAppDelegate.m */; };
+		A8F7A64E18F5584600507956 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F7A64C18F5584600507956 /* Main_iPhone.storyboard */; };
+		A8F7A65118F5584600507956 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F7A64F18F5584600507956 /* Main_iPad.storyboard */; };
+		A8F7A65618F5584600507956 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F7A65518F5584600507956 /* Images.xcassets */; };
+		A8F7A65D18F5584600507956 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A65C18F5584600507956 /* XCTest.framework */; };
+		A8F7A65E18F5584600507956 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63A18F5584600507956 /* Foundation.framework */; };
+		A8F7A65F18F5584600507956 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63E18F5584600507956 /* UIKit.framework */; };
+		A8F7A66718F5584600507956 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8F7A66518F5584600507956 /* InfoPlist.strings */; };
+		A8F7A66918F5584600507956 /* SmartScanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F7A66818F5584600507956 /* SmartScanTests.m */; };
+		A8F7A67618F5587900507956 /* SCScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F7A67518F5587900507956 /* SCScanner.m */; };
+		A8F7A67918F5588200507956 /* SCCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F7A67818F5588200507956 /* SCCircularProgressView.m */; };
+		A8F7A67C18F5589B00507956 /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F7A67B18F5589B00507956 /* SCViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A8F7A66018F5584600507956 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8F7A62F18F5584600507956 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8F7A63618F5584600507956;
+			remoteInfo = SmartScan;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A8F7A63718F5584600507956 /* SmartScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8F7A63A18F5584600507956 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A8F7A63C18F5584600507956 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A8F7A63E18F5584600507956 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A8F7A64218F5584600507956 /* SmartScan-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartScan-Info.plist"; sourceTree = "<group>"; };
+		A8F7A64418F5584600507956 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A8F7A64618F5584600507956 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A8F7A64818F5584600507956 /* SmartScan-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartScan-Prefix.pch"; sourceTree = "<group>"; };
+		A8F7A64918F5584600507956 /* SCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAppDelegate.h; sourceTree = "<group>"; };
+		A8F7A64A18F5584600507956 /* SCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = "<group>"; };
+		A8F7A64D18F5584600507956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		A8F7A65018F5584600507956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		A8F7A65518F5584600507956 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A8F7A65B18F5584600507956 /* SmartScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8F7A65C18F5584600507956 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A8F7A66418F5584600507956 /* SmartScanTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartScanTests-Info.plist"; sourceTree = "<group>"; };
+		A8F7A66618F5584600507956 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A8F7A66818F5584600507956 /* SmartScanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartScanTests.m; sourceTree = "<group>"; };
+		A8F7A67418F5587900507956 /* SCScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCScanner.h; sourceTree = "<group>"; };
+		A8F7A67518F5587900507956 /* SCScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCScanner.m; sourceTree = "<group>"; };
+		A8F7A67718F5588200507956 /* SCCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCircularProgressView.h; sourceTree = "<group>"; };
+		A8F7A67818F5588200507956 /* SCCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCircularProgressView.m; sourceTree = "<group>"; };
+		A8F7A67A18F5589B00507956 /* SCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
+		A8F7A67B18F5589B00507956 /* SCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A8F7A63418F5584600507956 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8F7A63D18F5584600507956 /* CoreGraphics.framework in Frameworks */,
+				A8F7A63F18F5584600507956 /* UIKit.framework in Frameworks */,
+				A8F7A63B18F5584600507956 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8F7A65818F5584600507956 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8F7A65D18F5584600507956 /* XCTest.framework in Frameworks */,
+				A8F7A65F18F5584600507956 /* UIKit.framework in Frameworks */,
+				A8F7A65E18F5584600507956 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A8F7A62E18F5584600507956 = {
+			isa = PBXGroup;
+			children = (
+				A8F7A64018F5584600507956 /* SmartScan */,
+				A8F7A66218F5584600507956 /* SmartScanTests */,
+				A8F7A63918F5584600507956 /* Frameworks */,
+				A8F7A63818F5584600507956 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A8F7A63818F5584600507956 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8F7A63718F5584600507956 /* SmartScan.app */,
+				A8F7A65B18F5584600507956 /* SmartScanTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A8F7A63918F5584600507956 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8F7A63A18F5584600507956 /* Foundation.framework */,
+				A8F7A63C18F5584600507956 /* CoreGraphics.framework */,
+				A8F7A63E18F5584600507956 /* UIKit.framework */,
+				A8F7A65C18F5584600507956 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8F7A64018F5584600507956 /* SmartScan */ = {
+			isa = PBXGroup;
+			children = (
+				A8F7A67318F5585B00507956 /* View */,
+				A8F7A67218F5585600507956 /* Model */,
+				A8F7A64918F5584600507956 /* SCAppDelegate.h */,
+				A8F7A64A18F5584600507956 /* SCAppDelegate.m */,
+				A8F7A64C18F5584600507956 /* Main_iPhone.storyboard */,
+				A8F7A64F18F5584600507956 /* Main_iPad.storyboard */,
+				A8F7A65518F5584600507956 /* Images.xcassets */,
+				A8F7A64118F5584600507956 /* Supporting Files */,
+			);
+			path = SmartScan;
+			sourceTree = "<group>";
+		};
+		A8F7A64118F5584600507956 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8F7A64218F5584600507956 /* SmartScan-Info.plist */,
+				A8F7A64318F5584600507956 /* InfoPlist.strings */,
+				A8F7A64618F5584600507956 /* main.m */,
+				A8F7A64818F5584600507956 /* SmartScan-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A8F7A66218F5584600507956 /* SmartScanTests */ = {
+			isa = PBXGroup;
+			children = (
+				A8F7A66818F5584600507956 /* SmartScanTests.m */,
+				A8F7A66318F5584600507956 /* Supporting Files */,
+			);
+			path = SmartScanTests;
+			sourceTree = "<group>";
+		};
+		A8F7A66318F5584600507956 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8F7A66418F5584600507956 /* SmartScanTests-Info.plist */,
+				A8F7A66518F5584600507956 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A8F7A67218F5585600507956 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A8F7A67418F5587900507956 /* SCScanner.h */,
+				A8F7A67518F5587900507956 /* SCScanner.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A8F7A67318F5585B00507956 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A8F7A67A18F5589B00507956 /* SCViewController.h */,
+				A8F7A67B18F5589B00507956 /* SCViewController.m */,
+				A8F7A67718F5588200507956 /* SCCircularProgressView.h */,
+				A8F7A67818F5588200507956 /* SCCircularProgressView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A8F7A63618F5584600507956 /* SmartScan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8F7A66C18F5584600507956 /* Build configuration list for PBXNativeTarget "SmartScan" */;
+			buildPhases = (
+				A8F7A63318F5584600507956 /* Sources */,
+				A8F7A63418F5584600507956 /* Frameworks */,
+				A8F7A63518F5584600507956 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartScan;
+			productName = SmartScan;
+			productReference = A8F7A63718F5584600507956 /* SmartScan.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A8F7A65A18F5584600507956 /* SmartScanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8F7A66F18F5584600507956 /* Build configuration list for PBXNativeTarget "SmartScanTests" */;
+			buildPhases = (
+				A8F7A65718F5584600507956 /* Sources */,
+				A8F7A65818F5584600507956 /* Frameworks */,
+				A8F7A65918F5584600507956 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8F7A66118F5584600507956 /* PBXTargetDependency */,
+			);
+			name = SmartScanTests;
+			productName = SmartScanTests;
+			productReference = A8F7A65B18F5584600507956 /* SmartScanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A8F7A62F18F5584600507956 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SC;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Murvin Bhantooa";
+				TargetAttributes = {
+					A8F7A65A18F5584600507956 = {
+						TestTargetID = A8F7A63618F5584600507956;
+					};
+				};
+			};
+			buildConfigurationList = A8F7A63218F5584600507956 /* Build configuration list for PBXProject "SmartScan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A8F7A62E18F5584600507956;
+			productRefGroup = A8F7A63818F5584600507956 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A8F7A63618F5584600507956 /* SmartScan */,
+				A8F7A65A18F5584600507956 /* SmartScanTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A8F7A63518F5584600507956 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8F7A65118F5584600507956 /* Main_iPad.storyboard in Resources */,
+				A8F7A65618F5584600507956 /* Images.xcassets in Resources */,
+				A8F7A64E18F5584600507956 /* Main_iPhone.storyboard in Resources */,
+				A8F7A64518F5584600507956 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8F7A65918F5584600507956 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8F7A66718F5584600507956 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A8F7A63318F5584600507956 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8F7A67918F5588200507956 /* SCCircularProgressView.m in Sources */,
+				A8F7A64B18F5584600507956 /* SCAppDelegate.m in Sources */,
+				A8F7A67618F5587900507956 /* SCScanner.m in Sources */,
+				A8F7A67C18F5589B00507956 /* SCViewController.m in Sources */,
+				A8F7A64718F5584600507956 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8F7A65718F5584600507956 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8F7A66918F5584600507956 /* SmartScanTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A8F7A66118F5584600507956 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8F7A63618F5584600507956 /* SmartScan */;
+			targetProxy = A8F7A66018F5584600507956 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A8F7A64318F5584600507956 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8F7A64418F5584600507956 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A8F7A64C18F5584600507956 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8F7A64D18F5584600507956 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		A8F7A64F18F5584600507956 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8F7A65018F5584600507956 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		A8F7A66518F5584600507956 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8F7A66618F5584600507956 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A8F7A66A18F5584600507956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A8F7A66B18F5584600507956 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A8F7A66D18F5584600507956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartScan/SmartScan-Prefix.pch";
+				INFOPLIST_FILE = "SmartScan/SmartScan-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A8F7A66E18F5584600507956 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartScan/SmartScan-Prefix.pch";
+				INFOPLIST_FILE = "SmartScan/SmartScan-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A8F7A67018F5584600507956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartScan.app/SmartScan";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartScan/SmartScan-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SmartScanTests/SmartScanTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A8F7A67118F5584600507956 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartScan.app/SmartScan";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartScan/SmartScan-Prefix.pch";
+				INFOPLIST_FILE = "SmartScanTests/SmartScanTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A8F7A63218F5584600507956 /* Build configuration list for PBXProject "SmartScan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8F7A66A18F5584600507956 /* Debug */,
+				A8F7A66B18F5584600507956 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8F7A66C18F5584600507956 /* Build configuration list for PBXNativeTarget "SmartScan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8F7A66D18F5584600507956 /* Debug */,
+				A8F7A66E18F5584600507956 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A8F7A66F18F5584600507956 /* Build configuration list for PBXNativeTarget "SmartScanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8F7A67018F5584600507956 /* Debug */,
+				A8F7A67118F5584600507956 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A8F7A62F18F5584600507956 /* Project object */;
+}

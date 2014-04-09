@@ -10,4 +10,18 @@
 
 @implementation SCScan
 
+- (instancetype)initWithMetaDataObject:(AVMetadataObject *)metaDataObject readableStringValue:(NSString *)stringValue
+{
+    NSParameterAssert(metaDataObject != nil);
+
+    self = [super init];
+    if (self)
+    {
+        _metaDataObject = [metaDataObject copy];
+        _stringValue = [stringValue copy];
+    }
+
+    return self;
+}
+
 @end

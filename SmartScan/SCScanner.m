@@ -7,6 +7,7 @@
 //
 
 #import "SCScanner.h"
+#import "SCScan.h"
 
 @interface SCScanner ()<AVCaptureMetadataOutputObjectsDelegate>
 
@@ -16,7 +17,7 @@
 @property (nonatomic, strong) AVCaptureMetadataOutput *metaDataOutput;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, weak) AVCaptureConnection *captureConnection;
-@property (nonatomic, copy) void (^completion)(NSString *);
+@property (nonatomic, copy) void (^completion)(SCScan *);
 
 @end
 
@@ -48,7 +49,7 @@
 
 - (instancetype)initForMetaDataObjectType:(NSArray *)metaDataObjectTypeArray
                  captureDeviceOrientation:(AVCaptureVideoOrientation)captureOrientation
-                          completionBlock:(void (^)(NSString *))completion
+                          completionBlock:(void (^)(SCScan *))completion
 {
     NSParameterAssert([metaDataObjectTypeArray count]);
     NSParameterAssert(completion);
@@ -121,8 +122,7 @@
     {
         if ([current isKindOfClass:[AVMetadataMachineReadableCodeObject class]])
         {
-            NSString *scanPayload = [((AVMetadataMachineReadableCodeObject *)current)stringValue];
-            _completion(scanPayload);
+            _completion([[SCScan alloc] initWithMetaDataObject:current readableStringValue:[((AVMetadataMachineReadableCodeObject *)current)stringValue]]);
         }
     }
 }

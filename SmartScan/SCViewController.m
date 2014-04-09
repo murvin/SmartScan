@@ -23,9 +23,9 @@
     __typeof(self) __weak weakSelf = self;
     self.scanner = [[SCScanner alloc] initForMetaDataObjectType:@[AVMetadataObjectTypeQRCode]
                                        captureDeviceOrientation:AVCaptureVideoOrientationPortrait
-                                                completionBlock:^void (NSString *scanPayload){
+                                                completionBlock:^void (SCScan *scanPayload){
 
-                                                    NSLog(@"Found code: %@", scanPayload);
+//                                                    NSLog(@"Found code: %@", scanPayload);
                                                     [weakSelf.scanner stopScan];
                                                     [weakSelf.circularProgressView stopAnimating];
                                                 }];

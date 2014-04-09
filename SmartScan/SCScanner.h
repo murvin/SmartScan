@@ -9,6 +9,8 @@
 @import Foundation;
 @import AVFoundation;
 
+@class SCScan;
+
 @interface SCScanner : NSObject
 
 @property (nonatomic, readonly, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
@@ -19,7 +21,7 @@
 
 - (instancetype)initForMetaDataObjectType:(NSArray *)metaDataObjectTypeArray
                  captureDeviceOrientation:(AVCaptureVideoOrientation)captureOrientation
-                          completionBlock:(void (^)(NSString *))completion;
+                          completionBlock:(void (^)(SCScan *))completion;
 
 - (void)startScan;
 

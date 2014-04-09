@@ -7,9 +7,23 @@
 //
 
 @import Foundation;
+@import AVFoundation;
 
 @interface SCScan : NSObject
 
-@property(nonatomic, readonly, strong) NSString *rawPayload;
+/**
+ *  A concrete implementation of this class is returned in a scan.
+ */
+@property(nonatomic, readonly, copy) AVMetadataObject *metaDataObject;
+
+/**
+ *  Returns the receiver’s errorCorrectedData decoded into a human-readable string.
+ *  The value of this property is an NSString created by decoding the binary payload according to the format of the machine
+ *  readable code.  Returns nil if a string representation cannot be created from the payload.
+ */
+@property(nonatomic, readonly, copy) NSString *stringValue;
+
+- (instancetype)initWithMetaDataObject:(AVMetadataObject *)metaDataObject readableStringValue:(NSString *)stringValue;
+
 
 @end

@@ -17,14 +17,18 @@ static const NSUInteger kGradientLayerCornerRadius = 18;
 
 static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
 
-@interface SCCircularProgressView ()
 
-@property (nonatomic, strong) NSArray *colorArray;
-@property (nonatomic, assign) BOOL isAnimating;
+@implementation SCCircularProgressView {
 
-@end
+    NSArray *_colorArray;
 
-@implementation SCCircularProgressView
+    BOOL _isAnimating;
+
+    /**
+     *  A handle on the initial frame this view was created with for reverse animations.
+     */
+    CGRect _initialFrame;
+}
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
@@ -32,6 +36,7 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
     if (self)
     {
         _colorArray = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor], [UIColor blueColor]];
+        _initialFrame = self.frame;
         [self createLayers];
     }
     return self;
@@ -53,12 +58,11 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
     return [CAGradientLayer class];
 }
 
-
 - (void)startAnimating
 {
-    if (![self isAnimating])
+    if (!_isAnimating)
     {
-        self.isAnimating = YES;
+        _isAnimating = YES;
 
         [self animateGradientColors];
     }
@@ -66,13 +70,13 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
 
 - (void)stopAnimating
 {
-    if ([self isAnimating])
+    if (_isAnimating)
     {
-        self.isAnimating = NO;
+        _isAnimating = NO;
     }
 }
 
-- (void)animateToFrame : (CGRect)frame withCompletionBlock : (void (^)(BOOL finised))completion
+- (void)animateToFrame:(CGRect)frame withCompletionBlock:(void (^)(BOOL finised))completion
 {
     if (CGRectEqualToRect(self.frame, frame))
     {
@@ -80,10 +84,13 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
     }
     else
     {
-        [UIView animateWithDuration:0.3f delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            self.frame = frame;
+        [UIView animateWithDuration:0.3f delay:0.0f
+             usingSpringWithDamping:0.4f
+              initialSpringVelocity:0.0f
+                            options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+             self.frame = frame;
 
-        } completion:completion];
+         } completion:completion];
     }
 }
 
@@ -99,7 +106,11 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
 {
     CALayer *maskLayer = [[CALayer alloc] init];
     maskLayer.cornerRadius = kGradientLayerCornerRadius;
-    maskLayer.frame = CGRectMake(kGradientLayerWidth, kGradientLayerWidth, CGRectGetWidth(self.layer.bounds) - (kGradientLayerWidth * 2), CGRectGetHeight(self.layer.bounds) - (kGradientLayerWidth * 2));
+    maskLayer.frame = CGRectMake(kGradientLayerWidth,
+                                 kGradientLayerWidth,
+                                 CGRectGetWidth(self.layer.bounds) - (kGradientLayerWidth * 2),
+                                 CGRectGetHeight(self.layer.bounds) - (kGradientLayerWidth * 2));
+
     maskLayer.borderWidth = kGradientLayerWidth;
     self.layer.mask = maskLayer;
 }
@@ -112,7 +123,7 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
     gradientLayer.cornerRadius = kGradientLayerCornerRadius;
     gradientLayer.opacity = 0.5f;
     NSMutableArray *colorRefArray = [@[] mutableCopy];
-    for (UIColor *color in self.colorArray)
+    for (UIColor *color in _colorArray)
     {
         [colorRefArray addObject:(id)color.CGColor];
     }
@@ -151,7 +162,7 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
 #pragma mark - CAAnimation Delegate Method
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag
 {
-    if ([self isAnimating])
+    if (_isAnimating)
     {
         [self animateGradientColors];
     }

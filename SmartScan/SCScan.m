@@ -46,8 +46,8 @@
 
 - (BOOL)isEqualToScan:(SCScan *)otherScan
 {
-    return _metaDataObject == otherScan.metaDataObject && _stringValue ? [_stringValue isEqualToString:otherScan.stringValue] : YES;
+    return _metaDataObject == otherScan.metaDataObject
+           && _stringValue ? [_stringValue isEqualToString:otherScan.stringValue] : !otherScan.stringValue;
 }
 
 @end
- 

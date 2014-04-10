@@ -8,6 +8,7 @@
 
 #import "SCViewController.h"
 #import "SCScanner.h"
+#import "SCScan.h"
 #import "SCCircularProgressView.h"
 
 @interface SCViewController ()
@@ -21,11 +22,24 @@
 - (void)viewDidLoad
 {
     __typeof(self) __weak weakSelf = self;
-    self.scanner = [[SCScanner alloc] initForMetaDataObjectType:@[AVMetadataObjectTypeQRCode]
-                                       captureDeviceOrientation:AVCaptureVideoOrientationPortrait
-                                                completionBlock:^void (SCScan *scanPayload){
 
-//                                                    NSLog(@"Found code: %@", scanPayload);
+    // All the types we want to support
+    NSArray *metaDataObjectTypesArray = @[AVMetadataObjectTypeQRCode,
+                                          AVMetadataObjectTypeAztecCode,
+                                          AVMetadataObjectTypeCode128Code,
+                                          AVMetadataObjectTypeCode39Code,
+                                          AVMetadataObjectTypeCode39Mod43Code,
+                                          AVMetadataObjectTypeEAN13Code,
+                                          AVMetadataObjectTypeEAN8Code,
+                                          AVMetadataObjectTypeEAN13Code,
+                                          AVMetadataObjectTypePDF417Code,
+                                          AVMetadataObjectTypeUPCECode,
+                                          ];
+
+    self.scanner = [[SCScanner alloc] initForMetaDataObjectType:metaDataObjectTypesArray
+                                       captureDeviceOrientation:AVCaptureVideoOrientationPortrait
+                                                completionBlock:^void (SCScan *scan){
+                                                    NSLog(@"Found code: %@", scan.stringValue);
                                                     [weakSelf.scanner stopScan];
                                                     [weakSelf.circularProgressView stopAnimating];
                                                 }];

@@ -50,4 +50,11 @@
            && _stringValue ? [_stringValue isEqualToString:otherScan.stringValue] : !otherScan.stringValue;
 }
 
+- (CGRect)transformedBoundsForPreviewLayer:(AVCaptureVideoPreviewLayer *)videoPreviewLayer
+{
+    AVMetadataMachineReadableCodeObject *transformed = (AVMetadataMachineReadableCodeObject *)[videoPreviewLayer transformedMetadataObjectForMetadataObject:_metaDataObject];
+
+    return transformed.bounds;
+}
+
 @end

@@ -26,4 +26,14 @@
 - (instancetype)initWithMetaDataObject:(AVMetadataObject *)metaDataObject readableStringValue:(NSString *)stringValue;
 
 
+/**
+ *  Transforms meta data object's coordinates to screen coordinates of the preview layer.
+ *
+ *  @param videoPreviewLayer The running video preview layer
+ *
+ *  @return A CGRect representing the frame of the found meta data item.
+ */
+- (CGRect)transformedBoundsForPreviewLayer:(AVCaptureVideoPreviewLayer *)videoPreviewLayer;
+
+
 @end

@@ -40,8 +40,12 @@
                                        captureDeviceOrientation:AVCaptureVideoOrientationPortrait
                                                 completionBlock:^void (SCScan *scan){
                                                     NSLog(@"Found code: %@", scan.stringValue);
-                                                    [weakSelf.scanner stopScan];
-                                                    [weakSelf.circularProgressView stopAnimating];
+                                                    CGRect scanFrame = [scan transformedBoundsForPreviewLayer:_scanner.videoPreviewLayer];
+                                                    [weakSelf.circularProgressView animateToFrame:scanFrame withCompletionBlock:^(BOOL finished){
+                                                        [weakSelf.scanner stopScan];
+                                                        [weakSelf.circularProgressView stopAnimating];
+                                                    }];
+
                                                 }];
 
     [self.scanner.videoPreviewLayer setFrame:[self view].frame];

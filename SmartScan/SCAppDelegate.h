@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Murvin Bhantooa. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface SCAppDelegate : UIResponder <UIApplicationDelegate>
 

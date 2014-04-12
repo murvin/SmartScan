@@ -42,13 +42,16 @@
             [_session addOutput:_metaDataOutput];
             [_session addInput:_deviceInput];
             [_metaDataOutput setMetadataObjectsDelegate:self queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
+
+            // Continuously auto focus on screen center;
+            [self applyFocusMode:AVCaptureFocusModeContinuousAutoFocus withPoint:CGPointMake(0.5f, 0.5f)];
         }
     }
     return self;
 }
 
 - (instancetype)initForMetaDataObjectType:(NSArray *)metaDataObjectTypeArray
-                 captureDeviceOrientation:(AVCaptureVideoOrientation)captureOrientation
+                     interfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
                           completionBlock:(void (^)(SCScan *))completion
 {
     NSParameterAssert([metaDataObjectTypeArray count]);
@@ -59,7 +62,7 @@
     {
         _completion = completion;
         [self initVideoPreviewLayerForMetaDataObjectType:metaDataObjectTypeArray
-                                captureDeviceOrientation:captureOrientation];
+                                captureDeviceOrientation:[self avCaptureVideoDeviceOrientationForInterfaceOrientation:interfaceOrientation]];
     }
     return self;
 }
@@ -68,13 +71,32 @@
 {
     if ([_device lockForConfiguration:nil])
     {
-
-        if ([_device hasTorch])
+        AVCaptureTorchMode torchMode = lightningTorchOn ? AVCaptureTorchModeOn : AVCaptureTorchModeOff;
+        if ([_device hasTorch] && [_device isTorchModeSupported:torchMode])
         {
-            [_device setTorchMode:lightningTorchOn ? AVCaptureTorchModeOn: AVCaptureTorchModeOff];
+            [_device setTorchMode:torchMode];
         }
 
         [_device unlockForConfiguration];
+    }
+}
+
+- (void)focusOnPoint:(CGPoint)point
+{
+    CGRect videoPreviewLayerBounds = _videoPreviewLayer.bounds;
+    CGFloat translatedX = point.x / CGRectGetWidth(videoPreviewLayerBounds);
+    CGFloat translatedY = point.y / CGRectGetHeight(videoPreviewLayerBounds);
+    CGPoint translatedPoint = CGPointMake(translatedX, translatedY);
+
+    [self applyFocusMode:AVCaptureFocusModeContinuousAutoFocus withPoint:translatedPoint];
+}
+
+- (void)setDeviceCaptureOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    if ([_captureConnection isVideoOrientationSupported])
+    {
+        AVCaptureVideoOrientation avCaptureVideoOrientation = [self avCaptureVideoDeviceOrientationForInterfaceOrientation:interfaceOrientation];
+        [_captureConnection setVideoOrientation:avCaptureVideoOrientation];
     }
 }
 
@@ -99,12 +121,21 @@
     }
 }
 
-- (void)setDeviceCaptureOrientation:(AVCaptureVideoOrientation)captureOrientation
-{
-    [_captureConnection setVideoOrientation:captureOrientation];
-}
-
 #pragma mark - Private Helper Methods
+
+- (AVCaptureVideoOrientation)avCaptureVideoDeviceOrientationForInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    switch (interfaceOrientation) {
+        case UIInterfaceOrientationLandscapeLeft:
+            return AVCaptureVideoOrientationLandscapeLeft;
+        case UIInterfaceOrientationLandscapeRight:
+            return AVCaptureVideoOrientationLandscapeRight;
+        case UIInterfaceOrientationPortrait:
+            return AVCaptureVideoOrientationPortrait;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            return AVCaptureVideoOrientationPortraitUpsideDown;
+    }
+}
 
 - (void)initVideoPreviewLayerForMetaDataObjectType:(NSArray *)metaDataObjectTypeArray
                           captureDeviceOrientation:(AVCaptureVideoOrientation)captureOrientation
@@ -115,6 +146,19 @@
     _captureConnection = [_videoPreviewLayer connection];
     [_captureConnection setVideoOrientation:captureOrientation];
 
+}
+
+- (void)applyFocusMode:(AVCaptureFocusMode)focusMode withPoint:(CGPoint)point
+{
+    if ([_device isFocusModeSupported:focusMode] && [_device lockForConfiguration:nil])
+    {
+        [_device setFocusMode:focusMode];
+        if ([_device isFocusPointOfInterestSupported])
+        {
+            [_device setFocusPointOfInterest:point];
+        }
+        [_device unlockForConfiguration];
+    }
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate Delegate Method

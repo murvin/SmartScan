@@ -45,7 +45,7 @@
         ];
 
     _scanner = [[SCScanner alloc] initForMetaDataObjectType:metaDataObjectTypesArray
-                                   captureDeviceOrientation:AVCaptureVideoOrientationPortrait
+                                       interfaceOrientation:UIInterfaceOrientationPortrait
                                             completionBlock:^void (SCScan *scan){
                     NSLog(@"Found code: %@", scan.stringValue);
                     [weakSelf.scanner stopScan];
@@ -72,6 +72,11 @@
     [_circularProgressView stopAnimating];
 }
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [_scanner setDeviceCaptureOrientation:toInterfaceOrientation];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -80,7 +85,8 @@
 - (void)didRecognizeTap:(UITapGestureRecognizer *)gestureRecognizer
 {
     CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
-    [self.circularProgressView animateCenterToPoint:tapPoint];
+    [_circularProgressView animateCenterToPoint:tapPoint];
+    [_scanner focusOnPoint:tapPoint];
 }
 
 @end

@@ -20,13 +20,32 @@
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initForMetaDataObjectType:(NSArray *)metaDataObjectTypeArray
-                 captureDeviceOrientation:(AVCaptureVideoOrientation)captureOrientation
+                     interfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
                           completionBlock:(void (^)(SCScan *))completion;
+
+/**
+ *  Will set the device's torch on/off.
+ *
+ *  @param lightningTorchOn YES when the torch should be on.
+ */
+- (void)setLightningTorchOn:(BOOL)lightningTorchOn;
+
+/**
+ *  Change focus mode from continuous center to the new designated point.
+ *
+ *  @param point A non translated coordinate point. The SCScanner will translate point in regards to the video preview bounds.
+ */
+- (void)focusOnPoint:(CGPoint) point;
+
+/**
+ *  Sets the video capture orientation to the AV corresponding one.
+ *
+ *  @param interfaceOrientation The UIInterfaceOrientation the device is rotating to.
+ */
+- (void)setDeviceCaptureOrientation:(UIInterfaceOrientation)interfaceOrientation;
 
 - (void)startScan;
 
 - (void)stopScan;
-
-- (void)setDeviceCaptureOrientation:(AVCaptureVideoOrientation)captureOrientation;
 
 @end

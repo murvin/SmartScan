@@ -17,17 +17,14 @@ static const NSUInteger kGradientLayerCornerRadius = 18;
 
 static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
 
+static const NSTimeInterval kAnimationDuration = 0.3f;
+
 
 @implementation SCCircularProgressView {
 
     NSArray *_colorArray;
 
     BOOL _isAnimating;
-
-    /**
-     *  A handle on the initial frame this view was created with for reverse animations.
-     */
-    CGRect _initialFrame;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -36,7 +33,6 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
     if (self)
     {
         _colorArray = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor], [UIColor blueColor]];
-        _initialFrame = self.frame;
         [self createLayers];
     }
     return self;
@@ -76,22 +72,16 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
     }
 }
 
-- (void)animateToFrame:(CGRect)frame withCompletionBlock:(void (^)(BOOL finised))completion
+-(void)animateCenterToPoint:(CGPoint)centerPoint
 {
-    if (CGRectEqualToRect(self.frame, frame))
-    {
-        completion(YES);
-    }
-    else
-    {
-        [UIView animateWithDuration:0.3f delay:0.0f
-             usingSpringWithDamping:0.4f
-              initialSpringVelocity:0.0f
-                            options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-             self.frame = frame;
+    [UIView animateWithDuration:kAnimationDuration
+                          delay:0.0f
+         usingSpringWithDamping:0.5f
+          initialSpringVelocity:0.0f
+                        options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+                            self.center = centerPoint;
 
-         } completion:completion];
-    }
+                        } completion:NULL];
 }
 
 #pragma mark - Private Helpers
@@ -111,6 +101,7 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
                                  CGRectGetWidth(self.layer.bounds) - (kGradientLayerWidth * 2),
                                  CGRectGetHeight(self.layer.bounds) - (kGradientLayerWidth * 2));
 
+    maskLayer.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f].CGColor;
     maskLayer.borderWidth = kGradientLayerWidth;
     self.layer.mask = maskLayer;
 }
@@ -121,7 +112,6 @@ static const CFTimeInterval kGradientLayerAnimationDuration = 0.5;
     gradientLayer.startPoint = CGPointMake(0.0, 0.0);
     gradientLayer.endPoint = CGPointMake(1.0f, 1.0f);
     gradientLayer.cornerRadius = kGradientLayerCornerRadius;
-    gradientLayer.opacity = 0.5f;
     NSMutableArray *colorRefArray = [@[] mutableCopy];
     for (UIColor *color in _colorArray)
     {

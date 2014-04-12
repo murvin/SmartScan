@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A89866B718F5A36E0007C466 /* SCScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A89866B618F5A36E0007C466 /* SCScan.m */; };
 		A89866B818F5A36E0007C466 /* SCScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A89866B618F5A36E0007C466 /* SCScan.m */; };
+		A89DA3A918F94F13001B24AE /* SCImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A89DA3A818F94F13001B24AE /* SCImageEffects.m */; };
 		A8F7A63B18F5584600507956 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63A18F5584600507956 /* Foundation.framework */; };
 		A8F7A63D18F5584600507956 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63C18F5584600507956 /* CoreGraphics.framework */; };
 		A8F7A63F18F5584600507956 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F7A63E18F5584600507956 /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 /* Begin PBXFileReference section */
 		A89866B518F5A36E0007C466 /* SCScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCScan.h; sourceTree = "<group>"; };
 		A89866B618F5A36E0007C466 /* SCScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCScan.m; sourceTree = "<group>"; };
+		A89DA3A718F94F13001B24AE /* SCImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageEffects.h; sourceTree = "<group>"; };
+		A89DA3A818F94F13001B24AE /* SCImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageEffects.m; sourceTree = "<group>"; };
 		A8F7A63718F5584600507956 /* SmartScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F7A63A18F5584600507956 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A8F7A63C18F5584600507956 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,6 +135,8 @@
 				A8F7A64F18F5584600507956 /* Main_iPad.storyboard */,
 				A8F7A65518F5584600507956 /* Images.xcassets */,
 				A8F7A64118F5584600507956 /* Supporting Files */,
+				A89DA3A718F94F13001B24AE /* SCImageEffects.h */,
+				A89DA3A818F94F13001B24AE /* SCImageEffects.m */,
 			);
 			path = SmartScan;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A89DA3A918F94F13001B24AE /* SCImageEffects.m in Sources */,
 				A8F7A67918F5588200507956 /* SCCircularProgressView.m in Sources */,
 				A8F7A64B18F5584600507956 /* SCAppDelegate.m in Sources */,
 				A8F7A67618F5587900507956 /* SCScanner.m in Sources */,

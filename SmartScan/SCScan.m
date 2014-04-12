@@ -17,7 +17,10 @@
     self = [super init];
     if (self)
     {
-        _metaDataObject = [metaDataObject copy];
+        /**
+         *  <AVMetadataMachineReadableCodeObject: 0x178038bc0> type "org.iso.QRCode", bounds { 0.5,0.3 0.3x0.5 }, corners { 0.5,0.4 0.5,0.8 0.8,0.9 0.8,0.3 }, time 16646515883166, stringValue "http://c.att.com/krs1b3ae0f0qgu"
+         */
+        _metaDataObject = metaDataObject;
         _stringValue = [stringValue copy];
     }
 
@@ -52,9 +55,20 @@
 
 - (CGRect)transformedBoundsForPreviewLayer:(AVCaptureVideoPreviewLayer *)videoPreviewLayer
 {
+    if (!videoPreviewLayer)
+    {
+        return CGRectZero;
+    }
+
     AVMetadataMachineReadableCodeObject *transformed = (AVMetadataMachineReadableCodeObject *)[videoPreviewLayer transformedMetadataObjectForMetadataObject:_metaDataObject];
 
     return transformed.bounds;
+}
+
+-(NSDate *)captureDate
+{
+    CMTime captureTime = _metaDataObject.time;
+    return nil;
 }
 
 @end

@@ -14,7 +14,7 @@
 /**
  *  A concrete implementation of this class is returned in a scan.
  */
-@property(nonatomic, readonly, copy) AVMetadataObject *metaDataObject;
+@property(nonatomic, readonly) AVMetadataObject *metaDataObject;
 
 /**
  *  Returns the receiver’s errorCorrectedData decoded into a human-readable string.
@@ -35,5 +35,5 @@
  */
 - (CGRect)transformedBoundsForPreviewLayer:(AVCaptureVideoPreviewLayer *)videoPreviewLayer;
 
-
+- (NSDate*)captureDate;
 @end

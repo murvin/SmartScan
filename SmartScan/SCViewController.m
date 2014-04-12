@@ -14,10 +14,18 @@
 @interface SCViewController ()
 
 @property(nonatomic, strong) SCScanner *scanner;
-@property (weak, nonatomic) IBOutlet SCCircularProgressView *circularProgressView;
+
+@property (nonatomic, weak) IBOutlet SCCircularProgressView *circularProgressView;
+
 @end
 
-@implementation SCViewController
+@implementation SCViewController {
+
+    /**
+     *  The progress view is translated to the tap point for focus..
+     */
+    UITapGestureRecognizer *_tapGestureRecognizer;
+}
 
 - (void)viewDidLoad
 {
@@ -34,36 +42,34 @@
                                           AVMetadataObjectTypeEAN13Code,
                                           AVMetadataObjectTypePDF417Code,
                                           AVMetadataObjectTypeUPCECode,
-                                          ];
+        ];
 
-    self.scanner = [[SCScanner alloc] initForMetaDataObjectType:metaDataObjectTypesArray
-                                       captureDeviceOrientation:AVCaptureVideoOrientationPortrait
-                                                completionBlock:^void (SCScan *scan){
-                                                    NSLog(@"Found code: %@", scan.stringValue);
-                                                    CGRect scanFrame = [scan transformedBoundsForPreviewLayer:_scanner.videoPreviewLayer];
-                                                    [weakSelf.circularProgressView animateToFrame:scanFrame withCompletionBlock:^(BOOL finished){
-                                                        [weakSelf.scanner stopScan];
-                                                        [weakSelf.circularProgressView stopAnimating];
-                                                    }];
+    _scanner = [[SCScanner alloc] initForMetaDataObjectType:metaDataObjectTypesArray
+                                   captureDeviceOrientation:AVCaptureVideoOrientationPortrait
+                                            completionBlock:^void (SCScan *scan){
+                    NSLog(@"Found code: %@", scan.stringValue);
+                    [weakSelf.scanner stopScan];
+                }];
 
-                                                }];
+    [_scanner.videoPreviewLayer setFrame:[self view].frame];
+    [self.view.layer insertSublayer:_scanner.videoPreviewLayer atIndex:0];
 
-    [self.scanner.videoPreviewLayer setFrame:[self view].frame];
-    [self.view.layer insertSublayer:self.scanner.videoPreviewLayer atIndex:0];
+    _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didRecognizeTap:)];
+    [self.view addGestureRecognizer:_tapGestureRecognizer];
 
     [super viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.circularProgressView startAnimating];
-    [self.scanner startScan];
+    [_circularProgressView startAnimating];
+    [_scanner startScan];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.scanner stopScan];
-    [self.circularProgressView stopAnimating];
+    [_scanner stopScan];
+    [_circularProgressView stopAnimating];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,5 +77,10 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)didRecognizeTap:(UITapGestureRecognizer *)gestureRecognizer
+{
+    CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
+    [self.circularProgressView animateCenterToPoint:tapPoint];
+}
 
 @end

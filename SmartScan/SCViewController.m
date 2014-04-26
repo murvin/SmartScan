@@ -76,6 +76,7 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Private Helper Methods
 - (void)didRecognizeTap:(UITapGestureRecognizer *)gestureRecognizer
 {
     CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
@@ -84,7 +85,6 @@
 }
 
 
-#pragma mark - Private Helper Methods
 - (void)makeNavigationBarTransparent
 {
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];

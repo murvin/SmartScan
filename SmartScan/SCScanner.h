@@ -16,12 +16,15 @@
 @property (nonatomic, readonly, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, assign, getter = isLightningTorchOn) BOOL lightningTorchOn;
 @property (nonatomic, readonly, getter = isDeviceCameraAvailable) BOOL deviceCameraAvailable;
+@property (nonatomic, readonly) UIImage *sampleBufferImage;
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initForMetaDataObjectType:(NSArray *)metaDataObjectTypeArray
                      interfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
                           completionBlock:(void (^)(SCScan *))completion;
+
++ (NSArray *)allMetaDataObjectTypes;
 
 /**
  *  Will set the device's torch on/off.

@@ -65,9 +65,11 @@
     return transformed.bounds;
 }
 
--(NSDate *)captureDate
+- (NSDate *)captureDate
 {
     CMTime captureTime = _metaDataObject.time;
+    NSTimeInterval seconds =  CMTimeGetSeconds(captureTime);
+    NSLog(@"seconds recorded : %f", seconds);
     return nil;
 }
 

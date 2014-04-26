@@ -9,7 +9,7 @@
 #import "SCScanner.h"
 #import "SCScan.h"
 
-@interface SCScanner ()<AVCaptureMetadataOutputObjectsDelegate>
+@interface SCScanner ()<AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property (nonatomic, strong) AVCaptureDevice *device;
 @property (nonatomic, strong) AVCaptureDeviceInput *deviceInput;
@@ -18,6 +18,7 @@
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, weak) AVCaptureConnection *captureConnection;
 @property (nonatomic, copy) void (^completion)(SCScan *);
+@property (nonatomic, readwrite) UIImage *sampleBufferImage;
 
 @end
 
@@ -43,6 +44,12 @@
             [_session addInput:_deviceInput];
             [_metaDataOutput setMetadataObjectsDelegate:self queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
 
+
+            // Create a VideoDataOutput and add it to the session to capture screen snap shots
+            AVCaptureVideoDataOutput *videoDataOutput = [[AVCaptureVideoDataOutput alloc] init];
+            [_session addOutput:videoDataOutput];
+            [videoDataOutput setSampleBufferDelegate:self queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
+
             // Continuously auto focus on screen center;
             [self applyFocusMode:AVCaptureFocusModeContinuousAutoFocus withPoint:CGPointMake(0.5f, 0.5f)];
         }
@@ -65,6 +72,21 @@
                                 captureDeviceOrientation:[self avCaptureVideoDeviceOrientationForInterfaceOrientation:interfaceOrientation]];
     }
     return self;
+}
+
++ (NSArray *)allMetaDataObjectTypes
+{
+    return @[AVMetadataObjectTypeQRCode,
+             AVMetadataObjectTypeAztecCode,
+             AVMetadataObjectTypeCode128Code,
+             AVMetadataObjectTypeCode39Code,
+             AVMetadataObjectTypeCode39Mod43Code,
+             AVMetadataObjectTypeEAN13Code,
+             AVMetadataObjectTypeEAN8Code,
+             AVMetadataObjectTypeEAN13Code,
+             AVMetadataObjectTypePDF417Code,
+             AVMetadataObjectTypeUPCECode,
+             ];
 }
 
 - (void)setLightningTorchOn:(BOOL)lightningTorchOn
@@ -161,6 +183,47 @@
     }
 }
 
+// Create a UIImage from sample buffer data
+- (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
+{
+    // Get a CMSampleBuffer's Core Video image buffer for the media data
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    // Lock the base address of the pixel buffer
+    CVPixelBufferLockBaseAddress(imageBuffer, 0);
+
+    // Get the number of bytes per row for the pixel buffer
+    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+
+    // Get the number of bytes per row for the pixel buffer
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    // Get the pixel buffer width and height
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+
+    // Create a device-dependent RGB color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+    // Create a bitmap graphics context with the sample buffer data
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8,
+                                                 bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    // Create a Quartz image from the pixel data in the bitmap graphics context
+    CGImageRef quartzImage = CGBitmapContextCreateImage(context);
+    // Unlock the pixel buffer
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+
+    // Free up the context and color space
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+
+    // Create an image object from the Quartz image
+    UIImage *image = [UIImage imageWithCGImage:quartzImage];
+
+    // Release the Quartz image
+    CGImageRelease(quartzImage);
+    
+    return (image);
+}
+
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate Delegate Method
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
@@ -172,6 +235,16 @@
             _completion([[SCScan alloc] initWithMetaDataObject:current readableStringValue:[((AVMetadataMachineReadableCodeObject *)current)stringValue]]);
         }
     }
+}
+
+
+#pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate Delegate Method
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
+{
+
+    // Create a UIImage from the sample buffer data
+    self.sampleBufferImage = [self imageFromSampleBuffer:sampleBuffer];
 }
 
 @end

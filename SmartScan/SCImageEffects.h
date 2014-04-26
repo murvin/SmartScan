@@ -12,4 +12,6 @@
 
 + (UIImage *)blurImage:(UIImage *)sourceImage;
 
++ (UIImage *)imageWithView:(UIView *)view;
+
 @end

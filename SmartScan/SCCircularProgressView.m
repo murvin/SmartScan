@@ -11,7 +11,7 @@
 /**
  *  Determines the thickness of the gradient
  */
-static const NSUInteger kGradientLayerWidth = 4;
+static const NSUInteger kGradientLayerWidth = 3;
 
 static const NSUInteger kGradientLayerCornerRadius = 18;
 

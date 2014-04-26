@@ -23,6 +23,7 @@
  */
 @property(nonatomic, readonly, copy) NSString *stringValue;
 
+
 - (instancetype)initWithMetaDataObject:(AVMetadataObject *)metaDataObject readableStringValue:(NSString *)stringValue;
 
 
@@ -36,4 +37,6 @@
 - (CGRect)transformedBoundsForPreviewLayer:(AVCaptureVideoPreviewLayer *)videoPreviewLayer;
 
 - (NSDate*)captureDate;
+
+
 @end

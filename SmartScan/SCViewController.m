@@ -10,6 +10,7 @@
 #import "SCScanner.h"
 #import "SCScan.h"
 #import "SCCircularProgressView.h"
+#import "SCScanViewController.h"
 
 @interface SCViewController ()
 
@@ -31,23 +32,14 @@
 {
     __typeof(self) __weak weakSelf = self;
 
-    // All the types we want to support
-    NSArray *metaDataObjectTypesArray = @[AVMetadataObjectTypeQRCode,
-                                          AVMetadataObjectTypeAztecCode,
-                                          AVMetadataObjectTypeCode128Code,
-                                          AVMetadataObjectTypeCode39Code,
-                                          AVMetadataObjectTypeCode39Mod43Code,
-                                          AVMetadataObjectTypeEAN13Code,
-                                          AVMetadataObjectTypeEAN8Code,
-                                          AVMetadataObjectTypeEAN13Code,
-                                          AVMetadataObjectTypePDF417Code,
-                                          AVMetadataObjectTypeUPCECode,
-        ];
-
-    _scanner = [[SCScanner alloc] initForMetaDataObjectType:metaDataObjectTypesArray
+    _scanner = [[SCScanner alloc] initForMetaDataObjectType:[SCScanner allMetaDataObjectTypes]
                                        interfaceOrientation:UIInterfaceOrientationPortrait
                                             completionBlock:^void (SCScan *scan){
-                    NSLog(@"Found code: %@", scan.stringValue);
+                    NSLog(@"Found code: %@ at %@", scan.stringValue, scan.captureDate);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf navigateToScanViewControllerWithPayload:scan];
+                    });
+
                     [weakSelf.scanner stopScan];
                 }];
 
@@ -56,6 +48,8 @@
 
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didRecognizeTap:)];
     [self.view addGestureRecognizer:_tapGestureRecognizer];
+
+    [self makeNavigationBarTransparent];
 
     [super viewDidLoad];
 }
@@ -87,6 +81,23 @@
     CGPoint tapPoint = [gestureRecognizer locationInView:self.view];
     [_circularProgressView animateCenterToPoint:tapPoint];
     [_scanner focusOnPoint:tapPoint];
+}
+
+
+#pragma mark - Private Helper Methods
+- (void)makeNavigationBarTransparent
+{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setTranslucent:YES];
+}
+
+- (void)navigateToScanViewControllerWithPayload:(SCScan *)scan
+{
+    SCScanViewController *scanViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"scanViewControllerIdentifier"];
+    [scanViewController setScan:scan];
+    [scanViewController setSenderBackgroundImage:_scanner.sampleBufferImage];
+    [self.navigationController pushViewController:scanViewController animated:YES];
 }
 
 @end

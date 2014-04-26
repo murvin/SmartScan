@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A80DFD1F190C1BB900479EDB /* SCScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80DFD1E190C1BB900479EDB /* SCScanViewController.m */; };
 		A89866B718F5A36E0007C466 /* SCScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A89866B618F5A36E0007C466 /* SCScan.m */; };
 		A89866B818F5A36E0007C466 /* SCScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A89866B618F5A36E0007C466 /* SCScan.m */; };
 		A89DA3A918F94F13001B24AE /* SCImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A89DA3A818F94F13001B24AE /* SCImageEffects.m */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A80DFD1D190C1BB900479EDB /* SCScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCScanViewController.h; sourceTree = "<group>"; };
+		A80DFD1E190C1BB900479EDB /* SCScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCScanViewController.m; sourceTree = "<group>"; };
 		A89866B518F5A36E0007C466 /* SCScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCScan.h; sourceTree = "<group>"; };
 		A89866B618F5A36E0007C466 /* SCScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCScan.m; sourceTree = "<group>"; };
 		A89DA3A718F94F13001B24AE /* SCImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageEffects.h; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				A8F7A67B18F5589B00507956 /* SCViewController.m */,
 				A8F7A67718F5588200507956 /* SCCircularProgressView.h */,
 				A8F7A67818F5588200507956 /* SCCircularProgressView.m */,
+				A80DFD1D190C1BB900479EDB /* SCScanViewController.h */,
+				A80DFD1E190C1BB900479EDB /* SCScanViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				A89DA3A918F94F13001B24AE /* SCImageEffects.m in Sources */,
 				A8F7A67918F5588200507956 /* SCCircularProgressView.m in Sources */,
 				A8F7A64B18F5584600507956 /* SCAppDelegate.m in Sources */,
+				A80DFD1F190C1BB900479EDB /* SCScanViewController.m in Sources */,
 				A8F7A67618F5587900507956 /* SCScanner.m in Sources */,
 				A8F7A67C18F5589B00507956 /* SCViewController.m in Sources */,
 				A89866B718F5A36E0007C466 /* SCScan.m in Sources */,
